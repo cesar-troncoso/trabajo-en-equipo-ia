@@ -112,15 +112,6 @@ N = 10  # Mostrar sólo las primeras N clases
 labels_used = np.unique(y_true_labels)[:N]  # Obtener etiquetas
 filtered_cm = cm[:N, :N]  # Cortar la matriz
 filtered_labels = le.classes_[labels_used]  # Obtener nombres
-
-# Visualizar matriz
-# disp = ConfusionMatrixDisplay(confusion_matrix=filtered_cm, display_labels=filtered_labels)
-# disp.plot(xticks_rotation=90)
-# plt.title("Matriz de Confusión - CNN (Primeras 10 clases)")
-# plt.tight_layout()
-# plt.savefig("matriz_confusion_recortada.png", dpi=300)
-# plt.show()
-
 os.makedirs("outputs", exist_ok=True)  # Asegura que la carpeta exista
 
 disp = ConfusionMatrixDisplay(confusion_matrix=filtered_cm, display_labels=filtered_labels)
@@ -133,7 +124,6 @@ plt.savefig("outputs/matriz_confusion_recortada.png", dpi=300)
 
 # Mostrar en pantalla
 plt.show()
-
 
 # ========== VISUALIZAR PREDICCIONES ==========
 print("\n=== Muestras visuales del conjunto de prueba ===")
