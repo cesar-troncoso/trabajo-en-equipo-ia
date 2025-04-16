@@ -1,0 +1,16 @@
+# Ignorar entorno virtual
+venv/
+
+# Archivos temporales de Python
+__pycache__/
+*.pyc
+
+# Archivos del sistema
+.DS_Store
+Thumbs.db
+
+# Ignorar la carpeta fruits
+fruits/
+
+# Ignorar la carpeta outputs
+outputs/
