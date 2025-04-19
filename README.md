@@ -36,7 +36,7 @@ clasificacion-frutas/
 
 ```bash
 git clone https://github.com/cesar-troncoso/trabajo-en-equipo-ia.git
-cd clasificacion-frutas
+cd trabajo-en-equipo-ia
 ```
 ---
 
