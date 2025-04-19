@@ -102,7 +102,7 @@ model.fit(X_train_cnn, y_train_cnn, epochs=5, validation_data=(X_test_cnn, y_tes
 loss, acc = model.evaluate(X_test_cnn, y_test_cnn)
 print(f"\n=== Precisión del modelo CNN: {acc:.2f} ===")
 
-# ========== MATRIZ DE CONFUSIÓN REDUCIDA ==========
+# ========== MATRIZ DE CONFUSIÓN REDUCIDA - CNN ==========
 y_pred_cnn = model.predict(X_test_cnn)
 y_pred_labels = np.argmax(y_pred_cnn, axis=1)  # Etiquetas predichas
 y_true_labels = np.argmax(y_test_cnn, axis=1)  # Etiquetas reales
@@ -118,12 +118,22 @@ disp = ConfusionMatrixDisplay(confusion_matrix=filtered_cm, display_labels=filte
 disp.plot(xticks_rotation=90)
 plt.title("Matriz de Confusión - CNN (Primeras 10 clases)")
 plt.tight_layout()
-
-# Guardar en archivo
 plt.savefig("outputs/matriz_confusion_recortada.png", dpi=300)
-
-# Mostrar en pantalla
 plt.show()
+
+# ========== MATRIZ DE CONFUSIÓN REDUCIDA - SVM ==========
+cm_svm = confusion_matrix(y_test, y_pred)
+labels_used_svm = np.unique(y_test)[:N]
+filtered_cm_svm = cm_svm[:N, :N]
+filtered_labels_svm = le.classes_[labels_used_svm]
+
+disp_svm = ConfusionMatrixDisplay(confusion_matrix=filtered_cm_svm, display_labels=filtered_labels_svm)
+disp_svm.plot(xticks_rotation=90)
+plt.title("Matriz de Confusión - SVM (Primeras 10 clases)")
+plt.tight_layout()
+plt.savefig("outputs/matriz_confusion_svm_recortada.png", dpi=300)
+plt.show()
+
 
 # ========== VISUALIZAR PREDICCIONES ==========
 print("\n=== Muestras visuales del conjunto de prueba ===")
